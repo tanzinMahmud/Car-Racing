@@ -225,7 +225,7 @@ void car(){
         glBegin(GL_QUADS);
         glVertex2f(20, 37);
         glVertex2f(19, 37);
-        glVertex2f(18, 36.5);
+        glVertex2f(18.5, 36.5);
         glVertex2f(20, 36.7);
         glEnd();
         glPopMatrix();
@@ -236,7 +236,7 @@ void car(){
         glBegin(GL_QUADS);
         glVertex2f(25, 37);
         glVertex2f(26, 37);
-        glVertex2f(27, 36.5);
+        glVertex2f(26.5, 36.5);
         glVertex2f(25, 36.7);
         glEnd();
         glPopMatrix();
