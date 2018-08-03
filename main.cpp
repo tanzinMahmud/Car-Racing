@@ -1,11 +1,20 @@
 #include <GL/gl.h>
+
+
 #include <GL/glu.h>
 #include <GL/glut.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <cmath>
+#include <iostream>
 
 #define PI 3.1416
+
+// beta variable
+auto speed = 0.1f;
+auto speedRoad = 0.25f;
+auto position = 0.0f;
+auto positionRoad = 0.0f;
 
 
 //For Display TEXT
@@ -75,6 +84,7 @@ void spe_key(int key, int x, int y){
         }
 
 }
+
 
 void processKeys(unsigned char key, int x, int y) {
 
@@ -305,6 +315,7 @@ void FrontPage(){
 void road(){
     ///GreenBar
     glColor3ub(9, 158, 11);
+
     glBegin(GL_QUADS);
     glVertex2f(0, 100);
     glVertex2f(0, 0);
@@ -345,6 +356,9 @@ void road(){
     glVertex2f(88, 0);
     glVertex2f(88, 100);
     glEnd();
+
+    glPushMatrix();
+    glTranslatef(0.0f, positionRoad, 0.0f);
 
     ///LaneDivider1
     glColor3ub(255, 255, 255);
@@ -443,12 +457,45 @@ void road(){
     glVertex2f(65, 5);
     glVertex2f(65, 15);
     glEnd();
+    glPopMatrix();
 }
 
-void car(){
-    ///PlayerCar
-    glColor3ub(206, 206, 206);
-    glBegin(GL_QUADS);
+
+
+void update(int value) {
+
+    /* if(position > 100) { */
+    /*     position = 30; */
+    /* } */
+
+
+    position -= speed;
+    /*  */
+    if (position < -2) {
+        position = 2;
+    }
+
+    positionRoad -= speedRoad;
+
+    if (positionRoad < -1) {
+        positionRoad = 2;
+
+    }
+    /*  */
+    std::cout << positionRoad << std::endl;
+
+
+    glutPostRedisplay();
+
+
+
+    glutTimerFunc(100, update, 0);
+    glutPostRedisplay();
+}
+
+void PlayerCar()
+{
+    glColor3ub(206, 206, 206); glBegin(GL_QUADS);
     glVertex2f(20, 30);
     glVertex2f(20, 24);
     glVertex2f(25, 24);
@@ -497,6 +544,16 @@ void car(){
     glVertex2f(24, 40);
     glEnd();
 
+
+}
+
+void car(){
+    ///PlayerCar
+
+    PlayerCar();
+
+    glPushMatrix();
+    glTranslatef(0.0f, position, 0.0f);
     ///OtherCar1
     glColor3ub(255, 0, 0);
     glBegin(GL_QUADS);
@@ -700,6 +757,8 @@ void car(){
     glVertex2f(79, 35);
     glVertex2f(80, 38);
     glEnd();
+
+    glPopMatrix();
 }
 
 void display(){
@@ -708,7 +767,7 @@ void display(){
 
     // road();
     // car();
-    //
+
 
     FrontPage();
     if (start == 1) {
@@ -720,7 +779,7 @@ void display(){
     }
 
     glutSwapBuffers();
-    glutPostRedisplay();
+    // glutPostRedisplay();
     glFlush();
 }
 
@@ -733,6 +792,9 @@ int main(int argc, char** argv){
     glutKeyboardFunc(processKeys );
     init();
     glutDisplayFunc(display);
+
+    // glutTimerFunc(1000,timer,0);
+    glutTimerFunc(1000,update,0);
     glutMainLoop();
     return 0;
 }
