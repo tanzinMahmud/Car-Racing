@@ -53,25 +53,25 @@ int lrIndex3=0;
 void processSpecialKeys (int key, int mx, int my) {
     switch(key){
     case GLUT_KEY_LEFT :
-        if (positionx >= -1) {
+        if (positionx >= -0.12) {
             positionx-=0.08;
         }
         glutPostRedisplay();
         break;
     case GLUT_KEY_RIGHT :
-        if (positionx <= +5) {
+        if (positionx <= +1.21) {
             positionx+=0.08;
         }
         glutPostRedisplay();
         break;
     case GLUT_KEY_UP :
-        if (positiony <= +5) {
+        if (positiony <= +1.2) {
             positiony+=0.08;
         }
         glutPostRedisplay();
         break;
     case GLUT_KEY_DOWN :
-        if (positiony >= -1) {
+        if (positiony >= -0.45) {
             positiony-=0.08;
         }
         glutPostRedisplay();
@@ -359,6 +359,38 @@ void road(){
     ///LaneDivider1
     glColor3ub(255, 255, 255);
     glBegin(GL_QUADS);
+    glVertex2f(35, 150);
+    glVertex2f(35, 140);
+    glVertex2f(37, 140);
+    glVertex2f(37, 150);
+    glEnd();
+
+    glColor3ub(255, 255, 255);
+    glBegin(GL_QUADS);
+    glVertex2f(35, 135);
+    glVertex2f(35, 125);
+    glVertex2f(37, 125);
+    glVertex2f(37, 135);
+    glEnd();
+
+    glColor3ub(255, 255, 255);
+    glBegin(GL_QUADS);
+    glVertex2f(35, 120);
+    glVertex2f(35, 110);
+    glVertex2f(37, 110);
+    glVertex2f(37, 120);
+    glEnd();
+
+    glColor3ub(255, 255, 255);
+    glBegin(GL_QUADS);
+    glVertex2f(35, 105);
+    glVertex2f(35, 95);
+    glVertex2f(37, 95);
+    glVertex2f(37, 105);
+    glEnd();
+
+    glColor3ub(255, 255, 255);
+    glBegin(GL_QUADS);
     glVertex2f(35, 90);
     glVertex2f(35, 80);
     glVertex2f(37, 80);
@@ -405,7 +437,95 @@ void road(){
     glVertex2f(37, 15);
     glEnd();
 
+    glColor3ub(255, 255, 255);
+    glBegin(GL_QUADS);
+    glVertex2f(35, 0);
+    glVertex2f(35, -10);
+    glVertex2f(37, -10);
+    glVertex2f(37, 0);
+    glEnd();
+
+    glColor3ub(255, 255, 255);
+    glBegin(GL_QUADS);
+    glVertex2f(35, -15);
+    glVertex2f(35, -25);
+    glVertex2f(37, -25);
+    glVertex2f(37, -15);
+    glEnd();
+
+    glColor3ub(255, 255, 255);
+    glBegin(GL_QUADS);
+    glVertex2f(35, -30);
+    glVertex2f(35, -40);
+    glVertex2f(37, -40);
+    glVertex2f(37, -30);
+    glEnd();
+
+    glColor3ub(255, 255, 255);
+    glBegin(GL_QUADS);
+    glVertex2f(35, -45);
+    glVertex2f(35, -55);
+    glVertex2f(37, -55);
+    glVertex2f(37, -45);
+    glEnd();
+
+    glColor3ub(255, 255, 255);
+    glBegin(GL_QUADS);
+    glVertex2f(35, -60);
+    glVertex2f(35, -70);
+    glVertex2f(37, -70);
+    glVertex2f(37, -60);
+    glEnd();
+
+    glColor3ub(255, 255, 255);
+    glBegin(GL_QUADS);
+    glVertex2f(35, -75);
+    glVertex2f(35, -85);
+    glVertex2f(37, -85);
+    glVertex2f(37, -75);
+    glEnd();
+
+    glColor3ub(255, 255, 255);
+    glBegin(GL_QUADS);
+    glVertex2f(35, -90);
+    glVertex2f(35, -100);
+    glVertex2f(37, -100);
+    glVertex2f(37, -90);
+    glEnd();
+
     ///LaneDivider2
+    glColor3ub(255, 255, 255);
+    glBegin(GL_QUADS);
+    glVertex2f(63, 150);
+    glVertex2f(63, 140);
+    glVertex2f(65, 140);
+    glVertex2f(65, 150);
+    glEnd();
+
+    glColor3ub(255, 255, 255);
+    glBegin(GL_QUADS);
+    glVertex2f(63, 135);
+    glVertex2f(63, 125);
+    glVertex2f(65, 125);
+    glVertex2f(65, 135);
+    glEnd();
+
+    glColor3ub(255, 255, 255);
+    glBegin(GL_QUADS);
+    glVertex2f(63, 120);
+    glVertex2f(63, 110);
+    glVertex2f(65, 110);
+    glVertex2f(65, 120);
+    glEnd();
+
+    glColor3ub(255, 255, 255);
+    glBegin(GL_QUADS);
+    glVertex2f(63, 105);
+    glVertex2f(63, 95);
+    glVertex2f(65, 95);
+    glVertex2f(65, 105);
+    glEnd();
+
     glColor3ub(255, 255, 255);
     glBegin(GL_QUADS);
     glVertex2f(63, 90);
@@ -453,6 +573,63 @@ void road(){
     glVertex2f(65, 5);
     glVertex2f(65, 15);
     glEnd();
+
+        glColor3ub(255, 255, 255);
+    glBegin(GL_QUADS);
+    glVertex2f(63, 0);
+    glVertex2f(63, -10);
+    glVertex2f(65, -10);
+    glVertex2f(65, 0);
+    glEnd();
+
+    glColor3ub(255, 255, 255);
+    glBegin(GL_QUADS);
+    glVertex2f(63, -15);
+    glVertex2f(63, -25);
+    glVertex2f(65, -25);
+    glVertex2f(65, -15);
+    glEnd();
+
+    glColor3ub(255, 255, 255);
+    glBegin(GL_QUADS);
+    glVertex2f(63, -30);
+    glVertex2f(63, -40);
+    glVertex2f(65, -40);
+    glVertex2f(65, -30);
+    glEnd();
+
+    glColor3ub(255, 255, 255);
+    glBegin(GL_QUADS);
+    glVertex2f(63, -45);
+    glVertex2f(63, -55);
+    glVertex2f(65, -55);
+    glVertex2f(65, -45);
+    glEnd();
+
+    glColor3ub(255, 255, 255);
+    glBegin(GL_QUADS);
+    glVertex2f(63, -60);
+    glVertex2f(63, -70);
+    glVertex2f(65, -70);
+    glVertex2f(65, -60);
+    glEnd();
+
+    glColor3ub(255, 255, 255);
+    glBegin(GL_QUADS);
+    glVertex2f(63, -75);
+    glVertex2f(63, -85);
+    glVertex2f(65, -85);
+    glVertex2f(65, -75);
+    glEnd();
+
+    glColor3ub(255, 255, 255);
+    glBegin(GL_QUADS);
+    glVertex2f(63, -90);
+    glVertex2f(63, -100);
+    glVertex2f(65, -100);
+    glVertex2f(65, -90);
+    glEnd();
+
     glPopMatrix();
 }
 
