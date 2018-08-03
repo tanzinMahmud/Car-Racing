@@ -1,8 +1,10 @@
 # depslib dependency file v1.0
-1533208194 source:c:\users\lenovo\desktop\summer (17-18) practice\graphics\final\car racing\main.cpp
+1533325503 source:c:\users\lenovo\desktop\summer (17-18) practice\graphics\final\car racing\main.cpp
 	<GL/gl.h>
 	<GL/glu.h>
 	<GL/glut.h>
 	<stdlib.h>
+	<stdio.h>
 	<cmath>
+	<iostream>
 

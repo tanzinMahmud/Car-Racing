@@ -1,6 +1,4 @@
 #include <GL/gl.h>
-
-
 #include <GL/glu.h>
 #include <GL/glut.h>
 #include <stdlib.h>
@@ -15,6 +13,8 @@ auto speed = 0.1f;
 auto speedRoad = 0.25f;
 auto position = 0.0f;
 auto positionRoad = 0.0f;
+auto positionx = 0.0f;
+auto positiony = 0.0f;
 
 
 //For Display TEXT
@@ -50,41 +50,36 @@ int lrIndex2=0;
 int car3 = +70;
 int lrIndex3=0;
 
-void spe_key(int key, int x, int y){
-        switch (key) {
-        case GLUT_KEY_DOWN:
-            if(FPS>(50+(level*2)))
-            FPS=FPS-2;
-            break;
-        case GLUT_KEY_UP:
-            FPS=FPS+2;
-            break;
-
-        case GLUT_KEY_LEFT:
-            if(lrIndex>=0){
-                lrIndex = lrIndex - (FPS/10);
-                if(lrIndex<0){
-                    lrIndex=-1;
-                }
-            }
-            break;
-
-
-        case GLUT_KEY_RIGHT:
-            if(lrIndex<=44){
-                lrIndex = lrIndex + (FPS/10);
-                if(lrIndex>44){
-                    lrIndex = 45;
-                }
-            }
-            break;
-
-        default:
-                break;
+void processSpecialKeys (int key, int mx, int my) {
+    switch(key){
+    case GLUT_KEY_LEFT :
+        if (positionx >= -1) {
+            positionx-=0.08;
         }
-
+        glutPostRedisplay();
+        break;
+    case GLUT_KEY_RIGHT :
+        if (positionx <= +5) {
+            positionx+=0.08;
+        }
+        glutPostRedisplay();
+        break;
+    case GLUT_KEY_UP :
+        if (positiony <= +5) {
+            positiony+=0.08;
+        }
+        glutPostRedisplay();
+        break;
+    case GLUT_KEY_DOWN :
+        if (positiony >= -1) {
+            positiony-=0.08;
+        }
+        glutPostRedisplay();
+        break;
+    default:
+        break;
+    }
 }
-
 
 void processKeys(unsigned char key, int x, int y) {
 
@@ -178,6 +173,7 @@ void FrontPage(){
     glVertex2f(32 + 58, 50 - 50);
     glVertex2f(32 - 22, 50 - 50);
     glEnd();
+
     //Road Midle
     glColor3f(1, 1, 1);
     glBegin(GL_TRIANGLES);
@@ -460,9 +456,7 @@ void road(){
     glPopMatrix();
 }
 
-
-
-void update(int value) {
+void update(int value){
 
     /* if(position > 100) { */
     /*     position = 30; */
@@ -493,8 +487,7 @@ void update(int value) {
     glutPostRedisplay();
 }
 
-void PlayerCar()
-{
+void PlayerCar(){
     glColor3ub(206, 206, 206); glBegin(GL_QUADS);
     glVertex2f(20, 30);
     glVertex2f(20, 24);
@@ -549,11 +542,16 @@ void PlayerCar()
 
 void car(){
     ///PlayerCar
+    glPushMatrix();
+    glTranslatef(positionx, positiony, 0.0f);
 
     PlayerCar();
 
+    glPopMatrix();
+
     glPushMatrix();
     glTranslatef(0.0f, position, 0.0f);
+
     ///OtherCar1
     glColor3ub(255, 0, 0);
     glBegin(GL_QUADS);
@@ -768,7 +766,6 @@ void display(){
     // road();
     // car();
 
-
     FrontPage();
     if (start == 1) {
         road();
@@ -787,14 +784,14 @@ int main(int argc, char** argv){
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_RGB | GLUT_DEPTH | GLUT_DOUBLE);
     glutInitWindowSize(700, 700);
-    glutCreateWindow("2D Car Racing");
-    glutSpecialFunc(spe_key);
+    glutCreateWindow("2D Car Racing Game");
     glutKeyboardFunc(processKeys );
     init();
     glutDisplayFunc(display);
 
     // glutTimerFunc(1000,timer,0);
     glutTimerFunc(1000,update,0);
+    glutSpecialFunc(processSpecialKeys);
     glutMainLoop();
     return 0;
 }
